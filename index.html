@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Image Example</title>
+    <style>
+        body {
+            margin: 0; 
+        }
+
+        .image-cafe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; 
+        }
+
+        .background-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        .cat-image {
+            position: absolute;
+            height: auto;
+            cursor: pointer;
+            width: 160px; 
+            top: 90%; 
+            animation: catAnimation 26s linear infinite; 
+        }
+
+        .dog-image {
+            position: absolute;
+            height: auto;
+            cursor: pointer;
+            width: 300px; 
+            top: 58%; 
+            left: 24%; 
+            transform: translate(-50%, -50%);
+            animation: dogAnimation 6s linear infinite; 
+        }
+
+        .parrot-image{
+            position: absolute;
+            height: auto;
+            cursor: pointer;
+            width: 140px;
+            top: 10%;
+            left: 10%;
+            animation: parrotanimation 14s linear infinite;
+        }
+
+        .hamster-image{
+            position: absolute;
+            height: auto;
+            cursor: pointer;
+            width: 80px;
+            top: 20%;
+            left: 20%;
+            animation: hamsteranimation 14s linear infinite;
+        }
+
+        @keyframes hamsteranimation {
+    0% {
+        top: 94%; /* Initial position from the top (ground level) */
+        left: 90%; /* Initial position from the right */
+    }
+    25% {
+        top: 84%; /* Move up */
+        left: 40%; /* Move left */
+    }
+    50% {
+        top: 90%; /* Move down */
+        left: 10%; /* Move left */
+    }
+    75% {
+        top: 84%; /* Move up again */
+        left: 40%; /* Move left */
+    }
+    100% {
+        top: 94%; /* Move down to the initial position */
+        left: 90%; /* Move right (back to initial position) */
+    }
+}
+
+
+        @keyframes catAnimation {
+            0%, 100% {
+                left: -20%; /* Initial and final position (left) */
+            }
+            50% {
+                left: 120%; /* Midpoint position (left) */
+            }
+        }
+
+        @keyframes dogAnimation {
+            0%, 100% {
+                transform: translateY(-50%) translateX(-50%); /* Initial and final position (middle) */
+            }
+            50% {
+                transform: translateY(-80%) translateX(-50%); /* Midpoint position (top) */
+            }
+        }
+
+        @keyframes parrotanimation {
+    0% {
+        left: 100%; /* Initial position (right) */
+    }
+    100% {
+        left: -10%; /* Move to the left (a bit beyond the left edge to create a smooth loop) */
+    }
+}
+
+
+
+
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: black;
+            border: 2px solid gold;
+            color: white;
+            z-index: 2;
+        }
+
+        .dog-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: black;
+            border: 2px solid goldenrod;
+            color: white;
+            z-index: 3;
+            animation: dogPopupAnimation 2s ease-in-out; 
+        }
+
+        @keyframes dogPopupAnimation {
+            0%, 100% {
+                transform: translateY(-50%); /* Initial and final position (middle) */
+            }
+            50% {
+                transform: translateY(-70%); /* Midpoint position (top) */
+            }
+        }
+
+        .parrot-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: black; /* Change color as needed */
+            border: 2px solid goldenrod; /* Change color as needed */
+            color: white;
+            z-index: 3;
+}
+        .hamster-popup {
+            display: none;
+            position: fixed;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: black; /* Change color as needed */
+            border: 2px solid goldenrod; /* Change color as needed */
+            color: white;
+            z-index: 3;
+}
+    </style>
+</head>
+<body>
+    <div class="image-cafe">
+        <img class="background-image" src="C:\Users\ASUS\OneDrive\Desktop\Anant National University\3rd YEAR\Interaction Design\FinaljurySem5\cafe (1).png" alt="Background Image">
+        <img class="cat-image" src="C:\Users\ASUS\OneDrive\Desktop\Anant National University\3rd YEAR\Interaction Design\FinaljurySem5\cat-removebg-preview.png" alt="Cat Image" onclick="showCatPopup()">
+        <img class="dog-image" src="C:\Users\ASUS\OneDrive\Desktop\Anant National University\3rd YEAR\Interaction Design\FinaljurySem5\dog-removebg-preview.png" alt="Dog Image" onclick="showDogPopup()">
+        <img class="parrot-image" src="C:\Users\ASUS\OneDrive\Desktop\Anant National University\3rd YEAR\Interaction Design\FinaljurySem5\parrot-removebg-preview.png" alt="Parrot Image" onclick="showParrotPopup()">
+        <img class="hamster-image" src="C:\Users\ASUS\OneDrive\Desktop\Anant National University\3rd YEAR\Interaction Design\FinaljurySem5\hamster-removebg-preview.png" alt="Hamster Image" onclick="showHamsterPopup()">
+    </div>
+
+    <div class="popup" id="cat-popup">
+        <p>1. Cats Have Fewer Taste Buds Than Dogs or People</p>
+        <p>2. Cats Don’t Get Cavities</p>
+        <p>3. Cats That Scratch Furniture Are Often Marking Their Territory</p>
+        <p>4. Cats have both short term and long term memory. This means that they can remember, short term, up to 16 hours ago.</p>
+        <p>5. A Cat's spine is so flexible because it's made up of 53 loosely fitting vertebrae. Humans only have 34.</p>
+        <button onclick="hideCatPopup()">Close</button>
+    </div>
+
+    <div class="popup" id="dog-popup">
+        <p>1. Dogs Can’t Chew Side to Side</p>
+        <p>2. Their sense of smell is at least 40x better than human beings</p>
+        <p>3. Dogs can sniff at the same time as breathing</p>
+        <p>4. Dogs don’t sweat like we do</p>
+        <p>5. Dogs have 18 muscles controlling their ears</p>
+        <button onclick="hideDogPopup()">Close</button>
+    </div>
+
+    <div class="popup" id="parrot-popup">
+        <p>1. Parrots Are The Only Animal In The World Capable of Mimicking Human Speech</p>
+        <p>2. Parrots Can Weigh Up To 7 Pounds</p>
+        <p>3. Parrots Eat With Their Feet</p>
+        <p>4. Parrots are Omnivores, Which Means They Eat Both Meat and Veg</p>
+        <p>5. They’re One of the Most Intelligent Birds</p>
+        <button onclick="hideParrotPopup()">Close</button>
+    </div>
+
+    <div class="popup" id="hamster-popup">
+        <p>1. Their Teeth Never Stop Growing</p>
+        <p>2. They Hoard Food</p>
+        <p>3. They Are Prone to Bacteria and Viruses</p>
+        <p>4. They Have Poor Eyesight</p>
+        <p>5. They Are Promiscuous</p>
+        <button onclick="hideHamsterPopup()">Close</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        function showCatPopup() {
+            var catPopup = document.getElementById('cat-popup');
+            catPopup.style.display = 'block';
+        }
+
+        function hideCatPopup() {
+            var catPopup = document.getElementById('cat-popup');
+            catPopup.style.display = 'none';
+        }
+            function showDogPopup() {
+            var dogPopup = document.getElementById('dog-popup');
+            dogPopup.style.display = 'block';
+        }
+
+        function hideDogPopup() {
+            var dogPopup = document.getElementById('dog-popup');
+            dogPopup.style.display = 'none';
+        }
+
+        function showParrotPopup() {
+            var parrotPopup = document.getElementById('parrot-popup');
+            parrotPopup.style.display = 'block';
+        }
+
+        function hideParrotPopup() {
+            var parrotPopup = document.getElementById('parrot-popup');
+            parrotPopup.style.display = 'none';
+        }
+
+        function showHamsterPopup() {
+            var hamsterPopup = document.getElementById('hamster-popup');
+            hamsterPopup.style.display = 'block';
+        }
+
+        function hideHamsterPopup() {
+            var hamsterPopup = document.getElementById('hamster-popup');
+            hamsterPopup.style.display = 'none';
+        }
+    </script>
+
+
+
